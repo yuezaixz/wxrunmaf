@@ -1,0 +1,30 @@
+{
+  "apps": [
+    {
+      "name": "wxrunmaf",
+      "script": "start.js",
+      "instances": 4,
+      "env": {
+        "COMMON_VARIABLE": "true"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ],
+  "deploy": {
+    "production": {
+      "production": {
+      "user":"david",
+      "host": ["pservice.runmaf.com"],
+      "ref": "origin/master",
+      "repo": "https://github.com/yuezaixz/wxrunmaf.git",
+      "path": "/data/www/wxrunmaf",
+      "ssh_options": "StrictHostKeyChecking=no",
+      "post-deploy": "yarn install && npm run build && pm2 startOrRestart ecosystem.json --env production",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
