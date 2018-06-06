@@ -19,6 +19,8 @@ module.exports = {
         named: 'never'
       }
     ],
+    'no-return-await': 'off', //await 简略语法，可能会造成不易理解
+    'no-eval': 'off'
   },
   globals: {}
 }

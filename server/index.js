@@ -15,7 +15,7 @@ const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3008
 
 const r = path => resolve(__dirname, path)
-const MIDDLEWARES = ['router']
+const MIDDLEWARES = ['database', 'router']
 
 class Server {
   constructor() {

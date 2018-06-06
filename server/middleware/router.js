@@ -6,6 +6,8 @@ export const router = app => {
   const router = new Route()
 
   router.get('/wechat-hear', (ctx, next) => {
+
+    require('../wechat')
     const token = config.wechat.token
     const {
       signature,
