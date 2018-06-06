@@ -22,7 +22,7 @@ export default class Wechat {
     try {
       const response = await request(options)
       console.log(response)
-      return JSON.parse(response)
+      return (typeof response) === 'string' ? JSON.parse(response) : response
     } catch (error) {
       console.error(error)
     }
@@ -45,8 +45,6 @@ export default class Wechat {
       url
     })
     const now = (new Date().getTime())
-    console.log(data)
-    console.log(typeof data)
     const expiresIn = now + (data.expires_in - 20) * 1000
 
     data.expires_in = expiresIn
