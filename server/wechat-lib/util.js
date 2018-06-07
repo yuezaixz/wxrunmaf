@@ -1,5 +1,5 @@
 import xml2js from 'xml2js'
-// import template from './tpl'
+import template from './tpl'
 import sha1 from 'sha1'
 
 function parseXML(xml) {
@@ -48,31 +48,31 @@ function formatMessage(result) {
   return message
 }
 
-// function tpl(content, message) {
-//   let type = 'text'
+function tpl(content, message) {
+  let type = 'text'
 
-//   if (Array.isArray(content)) {
-//     type = 'news'
-//   }
+  if (Array.isArray(content)) {
+    type = 'news'
+  }
 
-//   if (!content) {
-//     content = 'Empty News'
-//   }
+  if (!content) {
+    content = 'Empty News'
+  }
 
-//   if (content && content.type) {
-//     type = content.type
-//   }
+  if (content && content.type) {
+    type = content.type
+  }
 
-//   let info = Object.assign({}, {
-//     content: content,
-//     createTime: new Date().getTime(),
-//     msgType: type,
-//     toUserName: message.FromUserName,
-//     fromUserName: message.ToUserName
-//   })
+  let info = Object.assign({}, {
+    content: content,
+    createTime: new Date().getTime(),
+    msgType: type,
+    toUserName: message.FromUserName,
+    fromUserName: message.ToUserName
+  })
 
-//   return template(info)
-// }
+  return template(info)
+}
 
 function createNonce() {
   return Math.random().toString(36).substr(2, 15)
@@ -128,6 +128,6 @@ function sign(ticket, url) {
 export {
   formatMessage,
   parseXML,
-  // tpl,
+  tpl,
   sign
 }
