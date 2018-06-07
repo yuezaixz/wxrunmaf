@@ -73,7 +73,6 @@ export default class Wechat {
 
     try {
       const response = await request(options)
-      console.log(response)
       return (typeof response) === 'string' ? JSON.parse(response) : response
     } catch (error) {
       console.error(error)
@@ -209,7 +208,8 @@ export default class Wechat {
     let url = fetchUrl + 'access_token=' + token
     let options = {
       method: 'POST',
-      url: url
+      url: url,
+      json: true
     }
 
     if (permanent) {
@@ -236,7 +236,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: form
+      body: form,
+      json: true
     }
   }
 
@@ -251,7 +252,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: form
+      body: form,
+      json: true
     }
   }
 
@@ -260,7 +262,8 @@ export default class Wechat {
 
     return {
       method: 'POST',
-      url: url
+      url: url,
+      json: true
     }
   }
 
@@ -274,7 +277,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: options
+      body: options,
+      json: true
     }
   }
 
@@ -289,7 +293,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: form
+      body: form,
+      json: true
     }
   }
 
@@ -314,7 +319,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: form
+      body: form,
+      json: true
     }
   }
 
@@ -330,7 +336,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: form
+      body: form,
+      json: true
     }
   }
 
@@ -344,7 +351,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: form
+      body: form,
+      json: true
     }
   }
 
@@ -365,7 +373,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: form
+      body: form,
+      json: true
     }
   }
 
@@ -378,7 +387,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: form
+      body: form,
+      json: true
     }
   }
 
@@ -392,7 +402,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: form
+      body: form,
+      json: true
     }
   }
 
@@ -413,7 +424,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: form
+      body: form,
+      json: true
     }
   }
 
@@ -431,7 +443,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: menu
+      body: menu,
+      json: true
     }
   }
 
@@ -461,7 +474,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: form
+      body: form,
+      json: true
     }
   }
 
@@ -474,7 +488,8 @@ export default class Wechat {
     return {
       method: 'POST',
       url: url,
-      body: form
+      body: form,
+      json: true
     }
   }
 

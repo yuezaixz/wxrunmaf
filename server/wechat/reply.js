@@ -36,7 +36,40 @@ export default async (ctx, next) => {
     }
     console.log(3)
   } else if (message.MsgType === 'text') {
-    if (message.Content === '更新按钮吧') {
+    if (~message.Content.indexOf('我要加入') && message.Content && message.Content.length > 4) {
+      let searchTag = message.Content.substring(4)
+      let tags = await client.handle('fetchTags')
+      tags = tags['tags']
+      tags = tags.filter(item => item.name === searchTag)
+      if (!tags || !tags.length) {
+        await client.handle('createTag', searchTag)
+      }
+      await client.handle('batchTag', [message.FromUserName], tags[0].id)
+      ctx.body = '加入成功'
+    } else if (~message.Content.indexOf('我要查询') && message.Content && message.Content.length > 4) {
+      let searchTag = message.Content.substring(4)
+      let tags = await client.handle('fetchTags')
+      tags = tags['tags']
+      tags = tags.filter(item => item.name === searchTag)
+      if (tags && tags.length) {
+        const fetchTagUsersResponse = await client.handle('fetchTagUsers', tags[0].id)
+        if (fetchTagUsersResponse.data.openid && fetchTagUsersResponse.data.openid.length) {
+          let replyStr = ''
+          for (let i = 0; i < fetchTagUsersResponse.data.openid.length; i++) {
+            const element = fetchTagUsersResponse.data.openid[i]
+            const userInfoResponse = await client.handle('getUserInfo', element)
+            replyStr += (userInfoResponse.nickname + ',')
+            console.log(userInfoResponse)
+          }
+          replyStr = replyStr.substring(0, replyStr.length - 1)
+          ctx.body = '用户有:' + replyStr
+        } else {
+          ctx.body = '该标签下没有添加用户'
+        }
+      } else {
+        ctx.body = '找不到该标签'
+      }
+    } else if (message.Content === '更新按钮吧') {
       const menu = require('./menu').default
       let menuMsg = '创建成功'
 
