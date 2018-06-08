@@ -30,6 +30,13 @@ export default async (ctx, next) => {
         console.log(1)
         ctx.body = bt
         console.log(2)
+      } else if (message.EventKey === 'kf') {
+        ctx.body = [{
+          title: '脑中风康复训练',
+          description: '通过压力传感器，协助医生观察足部训练的受力情况，并通过评估功能来判断病患情况来使用训练功能进行康复训练',
+          picUrl: 'http://mmbiz.qpic.cn/mmbiz_jpg/knCHmO7t1HPM65O26N6NSI2genC7WFmXXyGoXxnqyOz49FQ4jBpslrDUQqOgZZo8M6C8ibQcOQV1e8fknNticcQQ/0',
+          url: 'https://itunes.apple.com/app/id1276483563'
+        }]
       }
     } else {
       ctx.body = tip
@@ -69,10 +76,13 @@ export default async (ctx, next) => {
       } else {
         ctx.body = '找不到该标签'
       }
+    } else if (message.Content === '222') {
+      let meunInfo = await client.handle('getMenu')
+      console.log(meunInfo)
+      ctx.body = 'hahahah'
     } else if (message.Content === '更新按钮吧') {
       const menu = require('./menu').default
       let menuMsg = '创建成功'
-
       try {
         await client.handle('delMenu')
       } catch (e) {
@@ -83,7 +93,8 @@ export default async (ctx, next) => {
       }
 
       try {
-        await client.handle('createMenu', menu)
+        const createResult = await client.handle('createMenu', menu)
+        console.log(createResult)
       } catch (err) {
         console.log('创建菜单失败')
         console.log(err)
@@ -93,6 +104,13 @@ export default async (ctx, next) => {
       ctx.body = menuMsg
     } else if (message.Content === 'bt' || message.Content === '3') {
       ctx.body = bt
+    } else if (message.Content === 'kf') {
+      ctx.body = [{
+        title: '脑中风康复训练',
+        description: '通过压力传感器，协助医生观察足部训练的受力情况，并通过评估功能来判断病患情况来使用训练功能进行康复训练',
+        picUrl: 'http://mmbiz.qpic.cn/mmbiz_jpg/knCHmO7t1HPM65O26N6NSI2genC7WFmXXyGoXxnqyOz49FQ4jBpslrDUQqOgZZo8M6C8ibQcOQV1e8fknNticcQQ/0',
+        url: 'https://itunes.apple.com/app/id1276483563'
+      }]
     }
   } else if (message.MsgType === 'image') {
     ctx.body = {

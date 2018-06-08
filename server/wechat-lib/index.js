@@ -72,6 +72,7 @@ export default class Wechat {
     options = Object.assign({}, options)
 
     try {
+      console.log('发起请求', options.url, options.body || {})
       const response = await request(options)
       return (typeof response) === 'string' ? JSON.parse(response) : response
     } catch (error) {
