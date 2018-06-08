@@ -5,7 +5,7 @@ const tip = 'Hello，欢迎使用跑动\n' +
   //  '回复 2，\n' +
   //  '回复 3，\n' +
   //  '回复 4，\n' +
-  '或者点击 <a href="' + config.SITE_ROOT_URL + '/exam">了解更多</a>'
+  '或者点击 <a href="' + config.WEBSITE_ROOT_URL + '/exam">了解更多</a>'
 
 const bt = '我的博客 <a href="http://blog.davidandty.com">点击进入</a>'
 

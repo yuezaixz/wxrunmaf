@@ -1,15 +1,6 @@
 <template>
   <section class="container">
     <img src="../static/img/logo.png" alt="Nuxt.js Logo" class="logo" />
-    <h1 class="title">
-      This page is loaded from the {{ name }}
-    </h1>
-    <h2 class="info" v-if="name === 'client'">
-      Please refresh the page
-    </h2>
-    <nuxt-link class="button" to="/">
-      Home page
-    </nuxt-link>
   </section>
 </template>
 <script>
@@ -21,8 +12,40 @@ export default {
   },
   head() {
     return {
-      title: `About Page (${this.name}-side)`
+      title: `测试一下`
     }
+  },
+  beforeMount() {
+    const wx = window.wx
+    const url = window.location.href
+
+    this.$store.dispatch('getWechatSignature', url).then(res => {
+      if (res.data.success) {
+        const params = res.data.params
+        wx.config({
+          debug: true, // 调试模式
+          appId: params.appId, // 公众号的唯一标识
+          timestamp: params.timestamp, // 生成签名的时间戳
+          nonceStr: params.noncestr, // 生成签名的随机串
+          signature: params.signature, // 签名
+          jsApiList: [
+            'chooseImage',
+            'previewImage',
+            'uploadImage',
+            'downloadImage',
+            'onMenuShareTimeline',
+            'showMenuItems',
+            'hideAllNonBaseMenuItem'
+          ]
+        })
+        wx.ready(() => {
+          setTimeout(() => {
+            wx.hideAllNonBaseMenuItem()
+            console.log('success')
+          }, 10000)
+        })
+      }
+    })
   }
 }
 </script>
