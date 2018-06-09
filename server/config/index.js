@@ -1,6 +1,6 @@
 export default {
   db: 'mongodb://localhost/wxrunmaf',
-  SITE_ROOT_URL: 'http://pservice.free.ngrok.cc/',
+  SITE_ROOT_URL: 'http://pservice.free.ngrok.cc',
   WEBSITE_ROOT_URL: 'http://www.paodong.cn',
   wechat: {
     appID: 'wxe306edb1cfde3126',
