@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = {
   /*
    ** Headers of the page
@@ -5,6 +6,8 @@ module.exports = {
   head: {
     title: 'starter',
     meta: [{
+        // 禁止下一行的各种警告
+        // eslint-disable-next-line
         charset: 'utf-8'
       },
       {
