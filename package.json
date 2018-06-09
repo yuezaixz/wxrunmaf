@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bcrypt": "^2.0.1",
     "cross-env": "^5.0.1",
     "ejs": "^2.6.1",
     "koa": "^2.4.1",
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-latest-node": "0.2.2",
     "babel-preset-stage-3": "6.24.1",
     "backpack-core": "^0.3.0",

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
-// const Schema = mongoose.Schema
+const Schema = mongoose.Schema
 
-const TicketSchema = new mongoose.Schema({
+const TicketSchema = new Schema({
   name: String,
   ticket: String,
   expires_in: Number,
